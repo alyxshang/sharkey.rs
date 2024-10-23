@@ -15,7 +15,7 @@ This repository contains the source code for a Rust library enabling users to pe
 To use ***Sharkey.rs*** in your Rust project, add this line to your project's `Cargo.toml`:
 
 ```TOML
-sharkey = { git = "https://github.com/alyxshang/sharkey.rs", tag="0.1.0" }
+sharkey = { git = "https://github.com/alyxshang/sharkey.rs", tag="v.0.1.0" }
 ```
 
 ## USAGE
