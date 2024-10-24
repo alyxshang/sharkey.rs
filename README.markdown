@@ -55,7 +55,7 @@ sharkey -m \
     -t $BLAHAJ_API_TOKEN \
     -a "/api" \
     -i "https://blahaj.zone" \
-    -n "9upmnr8igmxe01"
+    -n "9upmnr8igmxe01k3"
 # OR
 sharkey mflow \
     tauth $BLAHAJ_API_TOKEN
@@ -66,7 +66,125 @@ sharkey mflow \
 
 - To unfollow a user, you can run either of these three commands:
 
+```bash
+sharkey --dflow \
+	--tauth $BLAHAJ_API_TOKEN \
+	--apiad "/api" \
+	--inadd "https://blahaj.zone" \
+	--namei "9upmnr8igmxe01k3"
+# OR
+sharkey -d \
+    -t $BLAHAJ_API_TOKEN \
+    -a "/api" \
+    -i "https://blahaj.zone" \
+    -n "9upmnr8igmxe01k3"
+# OR
+sharkey dflow \
+    tauth $BLAHAJ_API_TOKEN
+    apiad "/api"
+    inadd "https://blahaj.zone"
+    namei "9upmnr8igmxe01k3"
+```
 
+- To post a note from your account, you can run either of these three commands:
+
+```bash
+sharkey --postn \
+    --tauth $BLAHAJ_API_TOKEN \
+    --apiad "/api" \
+    --inadd "https://blahaj.zone" \
+    --conte "Posted from the Sharkey.rs CLI." \
+    --visie "public" \
+    --etype "LikeOnly"
+# OR
+sharkey postn \
+    tauth $BLAHAJ_API_TOKEN \
+    apiad "/api" \
+    inadd "https://blahaj.zone" \
+    conte "Posted from the Sharkey.rs CLI." \
+    visie "public" \
+    etype "LikeOnly"
+# OR
+sharkey -p \
+    -t $BLAHAJ_API_TOKEN \
+    -a "/api" \
+    -i "https://blahaj.zone" \
+    -c "Posted from the Sharkey.rs CLI." \
+    -v "public" \
+    -e "LikeOnly"
+```
+
+- To delete a note you have posted from your account, you can run either of these three commands:
+
+```bash
+sharkey --rpost \
+    --tauth $BLAHAJ_API_TOKEN \
+    --apiad "/api" \
+    --inadd "https://blahaj.zone" \
+    --namei "9zr5dbrdym7x0074"
+# OR
+sharkey rpost\
+    tauth $BLAHAJ_API_TOKEN \
+    apiad "/api" \
+    inadd "https://blahaj.zone" \
+    namei "9zr5dbrdym7x0074"
+# OR
+sharkey -r \
+    -t $BLAHAJ_API_TOKEN \
+    -a "/api" \
+    -i "https://blahaj.zone" \
+    -n "9zr5dbrdym7x0074"
+```
+
+- To react to a note, you can run either of these three commands:
+
+```bash
+sharkey --liken \
+    --tauth $BLAHAJ_API_TOKEN \
+    --apiad "/api" \
+    --inadd "https://blahaj.zone" \
+    --namei "9zpo9el4sh0901es" \
+    --conte "like"
+# OR
+sharkey liken \
+    tauth $BLAHAJ_API_TOKEN \
+    apiad "/api" \
+    inadd "https://blahaj.zone" \
+    namei "9zpo9el4sh0901es" \
+    conte "like"
+# OR
+sharkey -l \
+    -t $BLAHAJ_API_TOKEN \
+    -a "/api" \
+    -i "https://blahaj.zone" \
+    -n "9zpo9el4sh0901es" \
+    -c "like"
+```
+
+- To delete a reaction to a note, you can run either of these three commands:
+
+```bash
+sharkey --ulike \
+    --tauth $BLAHAJ_API_TOKEN \
+    --apiad "/api" \
+    --inadd "https://blahaj.zone" \
+    --namei "9zpo9el4sh0901es" \
+    --conte "like"
+# OR
+sharkey ulike \
+    tauth $BLAHAJ_API_TOKEN \
+    apiad "/api" \
+    inadd "https://blahaj.zone" \
+    namei "9zpo9el4sh0901es" \
+    conte "like"
+# OR
+sharkey -u \
+    -t $BLAHAJ_API_TOKEN \
+    -a "/api" \
+    -i "https://blahaj.zone" \
+    -n "9zpo9el4sh0901es" \
+    -c "like"
+```
 
 - To print out version information about the CLI tool, you can run either of these three commands:
 
