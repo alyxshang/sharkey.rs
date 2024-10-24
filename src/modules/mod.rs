@@ -3,11 +3,16 @@ Sharkey.rs by Alyx Shang.
 Licensed under the FSL v1.
 */
 
-/// Exprting the
+/// Exporting the module
+/// containing this crate's CLI.
+#[cfg(feature="cli")]
+pub mod cli;
+
+/// Exporting the
 /// structures to 
 /// "help" the main
 /// structures.
-pub mod aux;
+pub mod extra;
 
 /// Exporting the 
 /// test module.

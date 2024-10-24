@@ -7,11 +7,17 @@ Licensed under the FSL v1.
 /// directory as a module.
 pub mod modules;
 
+/// Re-exporting the module
+/// containing this crate's
+/// CLI.
+#[cfg(feature="cli")]
+pub use modules::cli::*;
+
 /// Re-exporting the
 /// structures to 
 /// "help" the main
 /// structures.
-pub use modules::aux::*;
+pub use modules::extra::*;
 
 /// Re-exporting the 
 /// module to handle

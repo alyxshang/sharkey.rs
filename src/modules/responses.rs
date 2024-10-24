@@ -13,11 +13,11 @@ use serde::Deserialize;
 
 /// Importing the "UserNote" structure
 /// for the "CreatedNote" structure.
-use super::aux::UserNote;
+use super::extra::UserNote;
 
 /// Importing the "BadgeRole"
 /// structure.
-use super::aux::BadgeRole;
+use super::extra::BadgeRole;
 
 /// Importing the "HashMap"
 /// structure from the standard
