@@ -21,3 +21,10 @@ jobs:
         with:
           command: run
           args: --features=cli
+          
+      - name: "Get version info."
+        uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --features=cli \
+            -- --version
