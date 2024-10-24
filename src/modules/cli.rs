@@ -25,7 +25,6 @@ use super::enums::NoteVisibility;
 /// unfollow a user.
 use super::actions::unfollow_user;
 
-
 /// Importing this enum to set
 /// which type of reactions can be
 /// sent to a note.
@@ -47,6 +46,11 @@ use super::actions::unlike_note_for_user;
 /// for a user.
 use super::actions::delete_note_for_user;
 
+/// This functions contains this library's CLI.
+/// Different operations are possible and if they
+/// succeed, a string is returned with relevant
+/// information. If an operation fails, an error
+/// is returned.
 pub async fn cli() -> Result<String, SharkeyErr>{
     let result: String;
     let mut sharkey: App = App::new(
@@ -278,13 +282,13 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             &name_id,
             &entity_content
         ).await {
-            Ok(_feedback) => "React sent.".to_string(),
+            Ok(_feedback) => "Reaction sent.".to_string(),
             Err(e) => return Err::<String, SharkeyErr>(SharkeyErr::new(&e.to_string()))
         };
         result = res;
     }
 
-    // Deleting the reaction to a note.
+    // Deleting the reaction on a note.
     else if sharkey.arg_was_used("ulike") &&
         sharkey.arg_was_used("tauth") &&
         sharkey.arg_was_used("apiad") &&
