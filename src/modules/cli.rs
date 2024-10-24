@@ -20,7 +20,6 @@ pub async fn cli() -> Result<String, SharkeyErr>{
         "0.2.0",
         "Alyx Shang"
     );
-    sharkey.add_arg("react", "react to a note", &false);
     sharkey.add_arg("postn", "perform a posting action", &true);
     sharkey.add_arg("rpost", "remove a post", &false);
     sharkey.add_arg("liken", "send a reaction to a note", &false);
@@ -53,6 +52,18 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             Ok(token) => token,
             Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
         };
+        let api_route: String = sharkey.get_arg_data("apiad"){
+            Ok(api_route) => api_route,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let instance_addr: String = sharkey.get_arg_data("inadd"){
+            Ok(instance_addr) => instance_addr,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let name_id: String = sharkey.get_arg_data("namei"){
+            Ok(name_id) => name_id,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
     }
 
     // Unfollowing a user.
@@ -62,6 +73,22 @@ pub async fn cli() -> Result<String, SharkeyErr>{
         sharkey.arg_was_used("inadd") &&
         sharkey.arg_was_used("namei") 
     {
+        let token: String = sharkey.get_arg_data("tauth"){
+            Ok(token) => token,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let api_route: String = sharkey.get_arg_data("apiad"){
+            Ok(api_route) => api_route,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let instance_addr: String = sharkey.get_arg_data("inadd"){
+            Ok(instance_addr) => instance_addr,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let name_id: String = sharkey.get_arg_data("namei"){
+            Ok(name_id) => name_id,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
     }
 
     // Posting a note.
@@ -73,6 +100,22 @@ pub async fn cli() -> Result<String, SharkeyErr>{
         sharkey.arg_was_used("visie") &&
         sharkey.arg_was_used("etype")
     {
+        let token: String = sharkey.get_arg_data("tauth"){
+            Ok(token) => token,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let api_route: String = sharkey.get_arg_data("apiad"){
+            Ok(api_route) => api_route,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let instance_addr: String = sharkey.get_arg_data("inadd"){
+            Ok(instance_addr) => instance_addr,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let entity_content: String = sharkey.get_arg_data("conte"){
+            Ok(entity_content) => entity_content,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
     }
 
     // Deleting a note.
@@ -82,28 +125,82 @@ pub async fn cli() -> Result<String, SharkeyErr>{
         sharkey.add_arg("inadd") &&
         sharkey.add_arg("namei") 
     {
+        let token: String = sharkey.get_arg_data("tauth"){
+            Ok(token) => token,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let api_route: String = sharkey.get_arg_data("apiad"){
+            Ok(api_route) => api_route,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let instance_addr: String = sharkey.get_arg_data("inadd"){
+            Ok(instance_addr) => instance_addr,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let name_id: String = sharkey.get_arg_data("namei"){
+            Ok(name_id) => name_id,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
     }
 
     // Reacting to a note.
-    else if sharkey.arg_was_used("react") &&
-        sharkey.arg_was_used("liken") &&
+    else if sharkey.arg_was_used("liken") &&
         sharkey.arg_was_used("tauth") &&
         sharkey.arg_was_used("apiad") &&
         sharkey.arg_was_used("inadd") &&
         sharkey.arg_was_used("namei") &&
         sharkey.arg_was_used("conte")
     {
+        let token: String = sharkey.get_arg_data("tauth"){
+            Ok(token) => token,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let api_route: String = sharkey.get_arg_data("apiad"){
+            Ok(api_route) => api_route,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let instance_addr: String = sharkey.get_arg_data("inadd"){
+            Ok(instance_addr) => instance_addr,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let name_id: String = sharkey.get_arg_data("namei"){
+            Ok(name_id) => name_id,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let entity_content: String = sharkey.get_arg_data("conte"){
+            Ok(entity_content) => entity_content,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
     }
 
     // Deleting the reaction to a note.
-    else if sharkey.arg_was_used("react") &&
-        sharkey.arg_was_used("ulike") &&
+    else if sharkey.arg_was_used("ulike") &&
         sharkey.arg_was_used("tauth") &&
         sharkey.arg_was_used("apiad") &&
         sharkey.arg_was_used("inadd") &&
         sharkey.arg_was_used("namei") &&
         sharkey.arg_was_used("conte")
     {
+        let token: String = sharkey.get_arg_data("tauth"){
+            Ok(token) => token,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let api_route: String = sharkey.get_arg_data("apiad"){
+            Ok(api_route) => api_route,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let instance_addr: String = sharkey.get_arg_data("inadd"){
+            Ok(instance_addr) => instance_addr,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let name_id: String = sharkey.get_arg_data("namei"){
+            Ok(name_id) => name_id,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        let entity_content: String = sharkey.get_arg_data("conte"){
+            Ok(entity_content) => entity_content,
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
     }
 
 
