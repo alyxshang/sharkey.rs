@@ -162,7 +162,7 @@ pub struct DriveFile {
 }
 
 /// A structure to hold information
-/// on any drive files a user may have.
+/// on any drive folders a user may have.
 /// Required by the "DriveFile" structure.
 #[derive(Serialize, Deserialize)]
 pub struct DriveFolder {
