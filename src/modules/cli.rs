@@ -67,6 +67,7 @@ pub async fn cli() -> Result<String, SharkeyErr>{
     sharkey.add_arg("etype", "  the type of reaction on an entity", &true);
     sharkey.add_arg("mflow", " follow a user", &false);
     sharkey.add_arg("dflow", " unfollow a user", &false);
+    sharkey.add_arg("showo", " show relevant output", &false);
 
     if sharkey.version_is(){
         result = sharkey.version_info();
