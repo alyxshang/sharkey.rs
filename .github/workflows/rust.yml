@@ -13,7 +13,7 @@ jobs:
           toolchain: stable
       
       - name: "Build the CLI into a binary."
-        uses: actions-rs/toolchain@v1
+        uses: actions-rs/cargo@v1
         with:
           command: build
           args: --release --features=cli
