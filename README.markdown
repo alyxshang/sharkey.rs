@@ -6,7 +6,7 @@
 
 ## ABOUT :books:
 
-This repository contains the source code for a Rust library enabling users to perform different actions on the Fediverse platform ***Sharkey***. This library is on [crates.io](https://crates.io/crates/sharkey) under my old name. Using that version of this crate is not advised. I not only rebranded myself, but also made some improvements to this crate.
+This repository contains the source code for a Rust library and CLI tool enabling users to perform different actions on the Fediverse platform ***Sharkey***. This library is on [crates.io](https://crates.io/crates/sharkey) under my old name. Using that version of this library is not advised. I not only rebranded myself, but also made some improvements to the library.
 
 ## INSTALLATION :inbox_tray:
 
@@ -15,7 +15,7 @@ This repository contains the source code for a Rust library enabling users to pe
 To use ***Sharkey.rs*** in your own Rust project, add the following line to the `dependencies` section of your project's `Cargo.toml` file:
 
 ```TOML
-sharkey = { git = "https://github.com/alyxshang/sharkey.rs", tag="v.0.2.0" }
+sharkey = { git = "https://github.com/alyxshang/sharkey.rs", tag = "v.0.2.0" }
 ```
 
 ### Installation as a CLI tool
@@ -38,18 +38,18 @@ To view the documentation of the APIs this crate provides, run the command `carg
 
 ### CLI tool usage
 
-The CLI provided by ***Sharkey.rs*** features the following eight distinct actions: i) following a user on a Sharkey instance, ii) Unfollowing a user on a Sharkey instance, iii) posting a note from one's own account on a Sharkey instance, iv) deleting a note one has posted on one's own account on a Sharkey instance, v) reacting to a note from one's own account, vi) deleting a reaction to a note from one's own account, vii) getting the current version of the CLI tool, and viii) printing out some information on the usage flags the CLI tool provides.
+The CLI provided by ***Sharkey.rs*** features the following eight distinct actions: i) following a user on a Sharkey instance, ii) unfollowing a user on a Sharkey instance, iii) posting a note from one's own account on a Sharkey instance, iv) deleting a note one has posted on one's own account on a Sharkey instance, v) reacting to a note from one's own account, vi) deleting a reaction to a note from one's own account, vii) getting the current version of the CLI tool, and viii) printing out some information on the usage flags the CLI tool provides.
 
-In the examples featured below, the Sharkey instance I shall be using is [blahaj.zone](https://blahaj.zone). This instance of Sharkey has the API route `api` and the environment variable `BLAHAJ_API_TOKEN` represents the token you generated for your account.
+In the examples featured below, the Sharkey instance I shall be using is [blahaj.zone](https://blahaj.zone). This instance of Sharkey has the API route `api` and the environment variable `BLAHAJ_API_TOKEN` represents the token you generated for your account. The character random character sequences featured in some of the commands below are either the IDs of notes posted or of Sharkey users. 
 
-- To follow a user, you can run either of these three commands:
+- To follow a user, you can run either of these three commands (The user with ID [`9upmnr8igmxe01k3`](https://blahaj.zone/@frisaf) is being followed here.):
 
 ```bash
 sharkey --mflow \
-	--tauth $BLAHAJ_API_TOKEN \
-	--apiad "/api" \
-	--inadd "https://blahaj.zone" \
-	--namei "9upmnr8igmxe01k3"
+    --tauth $BLAHAJ_API_TOKEN \
+    --apiad "/api" \
+    --inadd "https://blahaj.zone" \
+    --namei "9upmnr8igmxe01k3"
 # OR
 sharkey -m \
     -t $BLAHAJ_API_TOKEN \
@@ -64,14 +64,14 @@ sharkey mflow \
     namei "9upmnr8igmxe01k3"
 ```
 
-- To unfollow a user, you can run either of these three commands:
+- To unfollow a user, you can run either of these three commands (The user with ID [`9upmnr8igmxe01k3`](https://blahaj.zone/@frisaf) is being unfollowed here.):
 
 ```bash
 sharkey --dflow \
-	--tauth $BLAHAJ_API_TOKEN \
-	--apiad "/api" \
-	--inadd "https://blahaj.zone" \
-	--namei "9upmnr8igmxe01k3"
+   --tauth $BLAHAJ_API_TOKEN \
+   --apiad "/api" \
+   --inadd "https://blahaj.zone" \
+   --namei "9upmnr8igmxe01k3"
 # OR
 sharkey -d \
     -t $BLAHAJ_API_TOKEN \
@@ -86,7 +86,7 @@ sharkey dflow \
     namei "9upmnr8igmxe01k3"
 ```
 
-- To post a note from your account, you can run either of these three commands:
+- To post a note from your account, you can run either of these three commands (The note is public and only accepts likes as reactions.):
 
 ```bash
 sharkey --postn \
@@ -114,7 +114,7 @@ sharkey -p \
     -e "LikeOnly"
 ```
 
-- To delete a note you have posted from your account, you can run either of these three commands:
+- To delete a note you have posted from your account, you can run either of these three commands (The note with the ID `9zr5dbrdym7x0074` is being deleted):
 
 ```bash
 sharkey --rpost \
@@ -136,7 +136,7 @@ sharkey -r \
     -n "9zr5dbrdym7x0074"
 ```
 
-- To react to a note, you can run either of these three commands:
+- To react to a note, you can run either of these three commands (The `like` reaction is being sent on the note with the ID `9zpo9el4sh0901es`.):
 
 ```bash
 sharkey --liken \
@@ -161,7 +161,7 @@ sharkey -l \
     -c "like"
 ```
 
-- To delete a reaction to a note, you can run either of these three commands:
+- To delete a reaction to a note, you can run either of these three commands (The `like` reaction is being deleted on the note with the ID `9zpo9el4sh0901es`.):
 
 ```bash
 sharkey --ulike \
