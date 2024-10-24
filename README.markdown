@@ -40,7 +40,7 @@ To view the documentation of the APIs this crate provides, run the command `carg
 
 The CLI provided by ***Sharkey.rs*** features the following eight distinct actions: i) following a user on a Sharkey instance, ii) unfollowing a user on a Sharkey instance, iii) posting a note from one's own account on a Sharkey instance, iv) deleting a note one has posted on one's own account on a Sharkey instance, v) reacting to a note from one's own account, vi) deleting a reaction to a note from one's own account, vii) getting the current version of the CLI tool, and viii) printing out some information on the usage flags the CLI tool provides.
 
-In the examples featured below, the Sharkey instance I shall be using is [blahaj.zone](https://blahaj.zone). This instance of Sharkey has the API route `api` and the environment variable `BLAHAJ_API_TOKEN` represents the token you generated for your account. The character random character sequences featured in some of the commands below are either the IDs of notes posted or of Sharkey users. 
+In the examples featured below, the Sharkey instance I shall be using is [blahaj.zone](https://blahaj.zone). This instance of Sharkey has the API route `api` and the environment variable `BLAHAJ_API_TOKEN` represents the token you generated for your account.
 
 - To follow a user, you can run either of these three commands (The user with ID [`9upmnr8igmxe01k3`](https://blahaj.zone/@frisaf) is being followed here.):
 
