@@ -42,7 +42,7 @@ The CLI provided by ***Sharkey.rs*** features the following eight distinct actio
 
 In the examples featured below, the Sharkey instance I shall be using is [blahaj.zone](https://blahaj.zone). This instance of Sharkey has the API route `api` and the environment variable `BLAHAJ_API_TOKEN` represents the token you generated for your account.
 
-- To follow a user, you can run either of these three commands (The user with ID [`9upmnr8igmxe01k3`](https://blahaj.zone/@frisaf) is being followed here.):
+- To follow a user, you can run either of these three commands (The user with the ID [`9upmnr8igmxe01k3`](https://blahaj.zone/@frisaf) is being followed here.):
 
 ```bash
 sharkey --mflow \
@@ -64,7 +64,7 @@ sharkey mflow \
     namei "9upmnr8igmxe01k3"
 ```
 
-- To unfollow a user, you can run either of these three commands (The user with ID [`9upmnr8igmxe01k3`](https://blahaj.zone/@frisaf) is being unfollowed here.):
+- To unfollow a user, you can run either of these three commands (The user with the ID [`9upmnr8igmxe01k3`](https://blahaj.zone/@frisaf) is being unfollowed here.):
 
 ```bash
 sharkey --dflow \
