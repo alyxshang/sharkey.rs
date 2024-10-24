@@ -13,6 +13,40 @@ use cliply::App;
 /// errors.
 use super::error::SharkeyErr;
 
+/// Importing the function to
+/// follow a user.
+use super::actions::follow_user;
+
+/// Importing this enum to set the scope
+/// of viewers for a note.
+use super::enums::NoteVisibility;
+
+/// Importing the function to
+/// unfollow a user.
+use super::actions::unfollow_user;
+
+
+/// Importing this enum to set
+/// which type of reactions can be
+/// sent to a note.
+use super::enums::ReactionAcceptance;
+
+/// Importing the function to like a note
+/// for a user.
+use super::actions::like_note_for_user;
+
+/// Importing the function to create a note
+/// for a user.
+use super::actions::create_note_for_user;
+
+/// Importing the function to unlike a note
+/// for a user.
+use super::actions::unlike_note_for_user;
+
+/// Importing the function to delete a note
+/// for a user.
+use super::actions::delete_note_for_user;
+
 pub async fn cli() -> Result<String, SharkeyErr>{
     let result: String;
     let mut sharkey: App = App::new(
@@ -64,6 +98,16 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             Ok(name_id) => name_id,
             Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
         };
+        let res: String = match follow_user(
+            &api_route,
+            &instance_addr,
+            &token,
+            &name_id
+        ){
+            Ok(feedback) => format!("User \"{}\" has been followed!", feedback.username),
+            Err(e) => return Err::<String, SharkeyErr>(&e.to_string()
+        };
+        result = res;
     }
 
     // Unfollowing a user.
@@ -89,6 +133,17 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             Ok(name_id) => name_id,
             Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
         };
+        let res: String = match unfollow_user(
+        ){
+            &api_route,
+            &instance_addr,
+            &token,
+            &name_id
+        }{
+            Ok(feedback) => format!("User \"{}\" has been unfollowed", feedback.username),
+            Err(e) => return Err::<String, ShakreyErr>(&e.to_string())
+        }
+        result = res;
     }
 
     // Posting a note.
@@ -116,6 +171,40 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             Ok(entity_content) => entity_content,
             Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
         };
+        let visib: String = sharkey.get_arg_data("visie"){
+            Ok(visib) => visib,
+            Err(e) => return Err::<String, SharkeyErr>(&e.to_string())
+        };
+        let etype: String = sharkey.get_arg_data("etype"){
+            Ok(etype) => etype,
+            Err(e) => return Err::<String, SharkeyErr>(&e.to_string())
+        };
+        let visibility: NoteVisibility;
+        match visib.as_str() {
+            "home" => visibility = NoteVisibility::Home,
+            "public" => visibility = NoteVisibility::Public,
+            "followers" => visibility = NoteVisibility::Followers,
+            _ => visibility = NoteVisbility::Home
+        };
+        let rec_type: ReactionAcceptance;
+        match etype.as_str() {
+            "LikeOnly" => rec_type = ReactionAcceptance::LikeOnly,
+            "NSOnly" => rec_type = ReactionAcceptance::NonSensitiveOnly,
+            "LOFRemote" => rec_type = ReactionAcceptance::LikeOnlyForRemote,
+            _ => rec_type = ReactionAcceptance::LikeOnly
+        }:
+        let res: String = match create_note_for_user(
+            &api_route,
+            &instance_addr,
+            &token,
+            &visibility,
+            &Some(rec_type)
+        ){
+            Ok(feedback) => format!("Note with the ID \"{}\" created.", feedback.created_note.id),
+            Err(e) => return Err::<String, SharkeyErr>(&e.to_string())
+        };
+        result = res;
+
     }
 
     // Deleting a note.
@@ -141,6 +230,16 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             Ok(name_id) => name_id,
             Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
         };
+        let res: String = match delete_note_for_user(
+            &api_route,
+            &instance_addr,
+            &token,
+            &name_id
+        ){
+            Ok(_feedback) => format!("Note with ID \"{}\" deleted.", &name_id),
+            Err(e) => return Err::<String, SharkeyErr>(&e.to_string())
+        };
+        result = res;
     }
 
     // Reacting to a note.
@@ -171,6 +270,17 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             Ok(entity_content) => entity_content,
             Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
         };
+        let res: String = match like_note_for_user(
+            &api_route,
+            &instance_addr,
+            &token,
+            &name_id,
+            &entity_content
+        ){
+            Ok(_feedback) => "React sent.".to_string(),
+            Err(e) => return Err::<String, ShakreyErr>(&e.to_string())
+        };
+        result = res;
     }
 
     // Deleting the reaction to a note.
@@ -201,6 +311,17 @@ pub async fn cli() -> Result<String, SharkeyErr>{
             Ok(entity_content) => entity_content,
             Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
         };
+        let res: String = match ulike_note_for_user(
+            &api_route,
+            &instance_addr,
+            &token,
+            &name_id,
+            &entity_content
+        ){
+            Ok(_feedback) => "Reaction deleted.".to_string(),
+            Err(e) => return Err::<String,SharkeyErr>(&e.to_string())
+        };
+        result = res;
     }
 
 
