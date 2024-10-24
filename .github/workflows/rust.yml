@@ -56,17 +56,41 @@ jobs:
             --tauth $BLAHAJ_API_TOKEN \
             --apiad "/api" \
             --inadd "https://blahaj.zone" \
-            -namei "9upmnr8igmxe01k3"
-
-      - name: "Make a new note on my account."
+            --namei "9upmnr8igmxe01k3"
+            
+      - name: "Post a note from my account."
         uses: actions-rs/cargo@v1
         with:
-          command: run
-          args: --features=cli \
+           command: run
+           args: --features=cli \
             -- --postn \
             --tauth $BLAHAJ_API_TOKEN \
             --apiad "/api" \
             --inadd "https://blahaj.zone" \
-            --conte "Posted from the test for the Sharkey.rs CLI triggered by commit https://github.com/alyxshang/sharkey.rs/commit/{{ $GITHUB_SHA }}." \
+            --conte "Posted from the test for the Sharkey.rs CLI." \
             --visie "public" \
-            --etype "LikeOnly" 
+            --etype "LikeOnly"
+            
+      - name: "Like this note: \"https://blahaj.zone/notes/9zpo9el4sh0901es\""
+        uses: actions-rs/cargo@v1
+        with:
+           command: run
+           args: --features=cli \
+             -- --liken \
+             --tauth $BLAHAJ_API_TOKEN \
+             --apiad "/api" \
+             --inadd "https://blahaj.zone" \
+             --namei "9zpo9el4sh0901es" \
+             --conte "like"
+
+      - name: "Unlike this note: \"https://blahaj.zone/notes/9zpo9el4sh0901es\""
+        uses: actions-rs/cargo@v1
+        with:
+           command: run
+           args: --features=cli \
+             -- --ulike \
+             --tauth $BLAHAJ_API_TOKEN \
+             --apiad "/api" \
+             --inadd "https://blahaj.zone" \
+             --namei "9zpo9el4sh0901es" \
+             --conte "like"
