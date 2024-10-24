@@ -6,7 +6,7 @@ cargo run --features=cli \
 cargo run --features=cli \
 	-- --help
 
-# Follow https://blahaj.zone/@frisaf.
+# Following the user "frisaf".
 cargo run --features=cli \
 	-- --mflow \
 	--tauth $BLAHAJ_API_TOKEN \
@@ -14,7 +14,7 @@ cargo run --features=cli \
 	--inadd "https://blahaj.zone" \
 	--namei "9upmnr8igmxe01k3"
 
-# Unfollow https://blahaj.zone/@frisaf
+# Unfollowing the user "frisaf".
 cargo run --features=cli \
 	-- --dflow \
 	--tauth $BLAHAJ_API_TOKEN \
