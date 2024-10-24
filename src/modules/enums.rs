@@ -72,9 +72,8 @@ pub enum ReactionAcceptance {
 }
 
 /// An enum to reflect
-/// and store the status
-/// of reaction acceptance
-/// for a note. Needed for the
+/// and store the visibility
+/// of a note. Needed for the
 /// "UserNote" function
 /// from "./responses.rs" and
 /// the "CreateNotePayload" from
